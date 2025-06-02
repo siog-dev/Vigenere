@@ -5,7 +5,11 @@ public class Vigenere {
 	public Vigenere(String key) {
 		
 	}
-	
+	/*
+	 * Loop over each character in plainText
+	 * Look up the tabula recta with the key
+	 * Encrypt that character
+	 */
 	public String encrypt(String plainText) {
 		return null;
 	}
