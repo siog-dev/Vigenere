@@ -2,47 +2,34 @@ package ie.atu.sw;
 
 public class Vigenere {
 	private char[] key = null;
-	//We need a constructor that ensures the key is passed into the program
+	
 	public Vigenere(String key) {
 		setKey(key);
 	}
 	
 	public void setKey(String key) {
-		// Trim whitespace, ensure the string is uppercase and convert to char array
-		this.key = key.trim().toUpperCase().toCharArray(); // Assign the new string to key
+		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
-	/*
-	 * Loop over each character in plainText
-	 * Look up the tabula recta with the key
-	 * Encrypt that character
-	 */
 	public String encrypt(String plainText) {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < plainText.length(); i++) {
 			sb.append(getEncryptedCharacter(key[i], plainText.charAt(i)));
 		}
-		
 		return sb.toString();
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
-		// Loop over each row
 		for (int row = 0; row < TABULA_RECTA.length; row++) {
-			// If we find the key in column[0] of the current row
 			if (TABULA_RECTA[row][0] == key) {
-				// Loop over that column
 				for (int col = 0; col < TABULA_RECTA[row].length; col++) {
-					// In row zero of the current column is equal to our key
 					if (TABULA_RECTA[0][col] == plain) {
-						// Return the values
 						return TABULA_RECTA[row][col];
 					}
 				}
 			}
 		}
-		// If something was entered that is not found, ignore it - return the plain text
 		return plain;
 	}
 	
@@ -52,7 +39,6 @@ public class Vigenere {
 		for (int i = 0; i < cipherText.length(); i++) {
 			sb.append(getDecryptedCharacter(key[i], cipherText.charAt(i)));
 		}
-		
 		return sb.toString();
 	}
 	
@@ -66,7 +52,6 @@ public class Vigenere {
 				}
 			}
 		}
-		
 		return cipher;
 	}
 	
