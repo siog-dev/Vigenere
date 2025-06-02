@@ -1,6 +1,7 @@
 package ie.atu.sw;
 
 public class Vigenere {
+	private char[] key = null;
 	//We need a constructor that ensures the key is passed into the program
 	public Vigenere(String key) {
 		
