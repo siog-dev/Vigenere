@@ -20,6 +20,10 @@ public class Vigenere {
 	public String encrypt(String plainText) {
 		StringBuilder sb = new StringBuilder();
 		
+		for (int i = 0; i < plainText.length(); i++) {
+			sb.append(getEncryptedCharacter(key[i], plainText.charAt(i)));
+		}
+		
 		return sb.toString();
 	}
 	
