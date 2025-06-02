@@ -32,7 +32,11 @@ public class Vigenere {
 	}
 	
 	public String decrypt(String cipherText) {
-		return null;
+		
+		for (int i = 0; i < cipherText.length(); i++) {
+			sb.append(getDecryptedCharacter(key[i], cipherText.charAt(i)));
+		}
+		return sb.toString;
 	}
 	
 	private char getDecryptedCharacter(char key, char cipher) {
