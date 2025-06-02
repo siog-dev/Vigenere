@@ -6,7 +6,7 @@ public class Runner {
 		String key = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG";
 		String plainText = "ATTACK THE CASTLE WALL AT DAWN"; //Cryptography version of "Hello, world!"
 		
-		Vigenere cipher = new Vigenere();
+		Vigenere cipher = new Vigenere(key);
 		String cipherText = cipher.encrypt(plainText);
 		System.out.println(cipherText);
 		System.out.println(cipher.decrypt(cipherText));
