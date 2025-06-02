@@ -57,7 +57,17 @@ public class Vigenere {
 	}
 	
 	private char getDecryptedCharacter(char key, char cipher) {
-		return '0';
+		for (int col = 0; col < TABULA_RECTA[0].length; col++) {
+			if (TABULA_RECTA[0][col] == key) {
+				for (int row = 0; row < TABULA_RECTA.length; row++) {
+					if (TABULA_RECTA[row][col] == cipher) {
+						return TABULA_RECTA[row][0];
+					}
+				}
+			}
+		}
+		
+		return cipher;
 	}
 	
 	private static final char[][] TABULA_RECTA = { 
