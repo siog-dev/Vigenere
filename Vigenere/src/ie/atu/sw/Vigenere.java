@@ -1,5 +1,11 @@
 package ie.atu.sw;
 
+/*
+ * Remove the redundant code in the class Vigenere shared by the encrypt() and decrypt()
+ * methods by writing a new private method that implements the shared behaviour.
+ * The encrypt() and decrypt() methods should delegate their behaviour to the new method.
+ */
+
 public class Vigenere {
 	private char[] key = null;
 	
