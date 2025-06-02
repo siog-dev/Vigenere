@@ -28,7 +28,22 @@ public class Vigenere {
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
-		return '0';
+		// Loop over each row
+		for (int row = 0; row < TABULA_RECTA.length; row++) {
+			// If we find the key in column[0] of the current row
+			if (TABULA_RECTA[row][0] == key) {
+				// Loop over that column
+				for (int col = 0; col < TABULA_RECTA[row].length; col++) {
+					// In row zero of the current column is equal to our key
+					if (TABULA_RECTA[0][col] == plain) {
+						// Return the values
+						return TABULA_RECTA[row][col];
+					}
+				}
+			}
+		}
+		// If something was entered that is not found, ignore it - return the plain text
+		return plain;
 	}
 	
 	public String decrypt(String cipherText) {
