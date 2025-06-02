@@ -11,7 +11,7 @@ public class Vigenere {
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
-	private String transform(String s, boolean encrypt) {
+	private String doCipher(String s, boolean encrypt) {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < s.length(); i++) {
@@ -25,11 +25,11 @@ public class Vigenere {
 	}
 	
 	public String encrypt(String plainText) {
-		return transform(plainText, true);
+		return doCipher(plainText, true);
 	}
 
 	public String decrypt(String cipherText) {
-		return transform(cipherText, false);
+		return doCipher(cipherText, false);
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
