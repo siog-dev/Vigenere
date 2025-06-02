@@ -15,11 +15,8 @@ public class Vigenere {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < s.length(); i++) {
-			if (encrypt) {
-				sb.append(getEncryptedCharacter(key[i], s.charAt(i)));
-			}else {
-				sb.append(getDecryptedCharacter(key[i], s.charAt(i)));
-			}
+			char c = encrypt? getEncryptedCharacter(key[i], s.charAt(i)) : getDecryptedCharacter(key[i], s.charAt(i));
+			sb.append(c);
 		}
 		return sb.toString();
 	}
