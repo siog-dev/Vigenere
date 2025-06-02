@@ -21,6 +21,10 @@ public class Vigenere {
 		return null;
 	}
 	
+	private char getEncryptedCharacter(char key, char plain) {
+		return '0';
+	}
+	
 	public String decrypt(String cipherText) {
 		return null;
 	}
@@ -53,5 +57,4 @@ public class Vigenere {
 			{'Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X'},
 			{'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'}
 		};
-	
 }
