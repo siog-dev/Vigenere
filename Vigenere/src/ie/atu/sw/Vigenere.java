@@ -1,11 +1,5 @@
 package ie.atu.sw;
 
-/*
- * Remove the redundant code in the class Vigenere shared by the encrypt() and decrypt()
- * methods by writing a new private method that implements the shared behaviour.
- * The encrypt() and decrypt() methods should delegate their behaviour to the new method.
- */
-
 public class Vigenere {
 	private char[] key = null;
 	
@@ -17,13 +11,25 @@ public class Vigenere {
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
-	public String encrypt(String plainText) {
+	private String transform(String s, boolean encrypt) {
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i = 0; i < plainText.length(); i++) {
-			sb.append(getEncryptedCharacter(key[i], plainText.charAt(i)));
+		for (int i = 0; i < s.length(); i++) {
+			if (encrypt) {
+				sb.append(getEncryptedCharacter(key[i], s.charAt(i)));
+			}else {
+				sb.append(getDecryptedCharacter(key[i], s.charAt(i)));
+			}
 		}
 		return sb.toString();
+	}
+	
+	public String encrypt(String plainText) {
+		return transform(plainText, true);
+	}
+
+	public String decrypt(String cipherText) {
+		return transform(cipherText, false);
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
@@ -37,15 +43,6 @@ public class Vigenere {
 			}
 		}
 		return plain;
-	}
-	
-	public String decrypt(String cipherText) {
-		StringBuilder sb = new StringBuilder();
-		
-		for (int i = 0; i < cipherText.length(); i++) {
-			sb.append(getDecryptedCharacter(key[i], cipherText.charAt(i)));
-		}
-		return sb.toString();
 	}
 	
 	private char getDecryptedCharacter(char key, char cipher) {
