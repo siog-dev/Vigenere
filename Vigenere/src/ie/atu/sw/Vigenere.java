@@ -14,7 +14,7 @@ public class Vigenere {
 		return null;
 	}
 	
-	private char[][] tabulaRecta = { 
+	private static final char[][] TABULA_RECTA = { 
 			{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
 			{'B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'},
 			{'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B'},
