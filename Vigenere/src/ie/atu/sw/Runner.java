@@ -8,5 +8,6 @@ public class Runner {
 		
 		Vigenere cipher = new Vigenere();
 		String cipherText = cipher.encrypt(plainText);
+		System.out.println(cipherText);
 	}
 }
