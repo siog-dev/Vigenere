@@ -12,13 +12,29 @@ public class Vigenere {
 	}
 	
 	private String doCipher(String s, boolean encrypt) {
+		char[] localKey = s.length() > key.length ? getPaddedKey(s) : key;
+		
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < s.length(); i++) {
-			char c = encrypt? getEncryptedCharacter(key[i], s.charAt(i)) : getDecryptedCharacter(key[i], s.charAt(i));
+			char c = encrypt? getEncryptedCharacter(localKey[i], s.charAt(i)) : getDecryptedCharacter(localKey[i], s.charAt(i));
 			sb.append(c);
 		}
 		return sb.toString();
+	}
+	
+	private char[] getPaddedKey(String s) {
+		char[] padded = new char[s.length()];
+		
+		int index = 0;
+		for(int i = 0; i < s.length(); i++) {
+			padded[i] = key[index];
+			index++;
+			
+			if (index == key.length) index = 0;
+		}
+		
+		return padded;
 	}
 	
 	public String encrypt(String plainText) {
