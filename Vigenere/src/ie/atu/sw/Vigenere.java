@@ -18,7 +18,9 @@ public class Vigenere {
 	 * Encrypt that character
 	 */
 	public String encrypt(String plainText) {
-		return null;
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
