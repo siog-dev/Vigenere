@@ -4,8 +4,13 @@ public class Vigenere {
 	private char[] key = null;
 	//We need a constructor that ensures the key is passed into the program
 	public Vigenere(String key) {
+		setKey(key);
+	}
+	
+	public void setKey(String key) {
 		
 	}
+	
 	/*
 	 * Loop over each character in plainText
 	 * Look up the tabula recta with the key
