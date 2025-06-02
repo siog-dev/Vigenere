@@ -8,7 +8,8 @@ public class Vigenere {
 	}
 	
 	public void setKey(String key) {
-		
+		// Trim whitespace, ensure the string is uppercase and convert to char array
+		this.key = key.trim().toUpperCase().toCharArray(); // Assign the new string to key
 	}
 	
 	/*
