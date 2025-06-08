@@ -1,6 +1,8 @@
 package ie.atu.sw;
 
 public class Vigenere {
+	public static final int MIN_KEY_SIZE = 10;
+	public static final int MAX_KEY_SIZE = 100;
 	private char[] key = null;
 	
 	public Vigenere(String key) throws Exception {
