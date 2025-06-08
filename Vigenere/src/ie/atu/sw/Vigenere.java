@@ -3,7 +3,7 @@ package ie.atu.sw;
 public class Vigenere {
 	private char[] key = null;
 	
-	public Vigenere(String key) {
+	public Vigenere(String key) throws Exception {
 		setKey(key);
 	}
 	
