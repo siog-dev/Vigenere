@@ -19,7 +19,7 @@ public class Vigenere {
 			throw new Exception("Vigenere error: key cannot be null");
 		}else if (key.length() < MIN_KEY_SIZE || key.length() > MAX_KEY_SIZE) {
 			throw new Exception("Vigenere error: key size must be between "
-					+ MIN_KEY_SIZE + " and " + MAX_KEY_SIZE);
+					+ MIN_KEY_SIZE + " and " + MAX_KEY_SIZE + " characters.");
 		}
 	}
 	
