@@ -7,7 +7,7 @@ public class Vigenere {
 		setKey(key);
 	}
 	
-	public void setKey(String key) {
+	public void setKey(String key) throws Exception {
 		this.validateKey(key);
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
