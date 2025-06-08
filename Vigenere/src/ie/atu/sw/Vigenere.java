@@ -11,38 +11,8 @@ public class Vigenere {
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
-	private String doCipher(String s, boolean encrypt) {
-		char[] localKey = s.length() > key.length ? getPaddedKey(s) : key;
-		
-		StringBuilder sb = new StringBuilder();
-		
-		for (int i = 0; i < s.length(); i++) {
-			char c = encrypt? getEncryptedCharacter(localKey[i], s.charAt(i)) : getDecryptedCharacter(localKey[i], s.charAt(i));
-			sb.append(c);
-		}
-		return sb.toString();
-	}
-	
-	private char[] getPaddedKey(String s) {
-		char[] padded = new char[s.length()];
-		
-		int index = 0;
-		for(int i = 0; i < s.length(); i++) {
-			padded[i] = key[index];
-			index++;
-			
-			if (index == key.length) index = 0;
-		}
-		
-		return padded;
-	}
-	
 	public String encrypt(String plainText) {
 		return doCipher(plainText, true);
-	}
-
-	public String decrypt(String cipherText) {
-		return doCipher(cipherText, false);
 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
@@ -58,6 +28,10 @@ public class Vigenere {
 		return plain;
 	}
 	
+	public String decrypt(String cipherText) {
+		return doCipher(cipherText, false);
+	}
+	
 	private char getDecryptedCharacter(char key, char cipher) {
 		for (int col = 0; col < TABULA_RECTA[0].length; col++) {
 			if (TABULA_RECTA[0][col] == key) {
@@ -69,6 +43,20 @@ public class Vigenere {
 			}
 		}
 		return cipher;
+	}
+	
+	private char[] getPaddedKey(String s) {
+		char[] padded = new char[s.length()];
+		
+		int index = 0;
+		for(int i = 0; i < s.length(); i++) {
+			padded[i] = key[index];
+			index++;
+			
+			if (index == key.length) index = 0;
+		}
+		
+		return padded;
 	}
 	
 	private static final char[][] TABULA_RECTA = { 
@@ -99,4 +87,17 @@ public class Vigenere {
 			{'Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X'},
 			{'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'}
 		};
+	
+	private String doCipher(String s, boolean encrypt) {
+		char[] localKey = s.length() > key.length ? getPaddedKey(s) : key;
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < s.length(); i++) {
+			char c = encrypt? getEncryptedCharacter(localKey[i], s.charAt(i)) : getDecryptedCharacter(localKey[i], s.charAt(i));
+			sb.append(c);
+		}
+		return sb.toString();
+	}
+	
 }
