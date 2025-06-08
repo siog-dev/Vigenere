@@ -12,8 +12,14 @@ public class Vigenere {
 	}
 	
 	public String encrypt(String plainText) {
-		return doCipher(plainText, true);
-	}
+		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
+		
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < plainText.length(); i++) {
+			sb.append(getEncryptedCharacter(localKey[i], plainText.charAt(i)));
+		}
+		return sb.toString();
+ 	}
 	
 	private char getEncryptedCharacter(char key, char plain) {
 		for (int row = 0; row < TABULA_RECTA.length; row++) {
@@ -29,7 +35,13 @@ public class Vigenere {
 	}
 	
 	public String decrypt(String cipherText) {
-		return doCipher(cipherText, false);
+		char[] localKey = cipherText.length() > key.length ? getPaddedKey(cipherText) : key;
+		
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < cipherText.length(); i++) {
+			sb.append(getDecryptedCharacter(localKey[i], cipherText.charAt(i)));
+		}
+		return sb.toString();
 	}
 	
 	private char getDecryptedCharacter(char key, char cipher) {
@@ -87,17 +99,4 @@ public class Vigenere {
 			{'Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X'},
 			{'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'}
 		};
-	
-	private String doCipher(String s, boolean encrypt) {
-		char[] localKey = s.length() > key.length ? getPaddedKey(s) : key;
-		
-		StringBuilder sb = new StringBuilder();
-		
-		for (int i = 0; i < s.length(); i++) {
-			char c = encrypt? getEncryptedCharacter(localKey[i], s.charAt(i)) : getDecryptedCharacter(localKey[i], s.charAt(i));
-			sb.append(c);
-		}
-		return sb.toString();
-	}
-	
 }
