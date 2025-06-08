@@ -31,7 +31,8 @@ public class Vigenere {
 		}
 	}
 	
-	public String encrypt(String plainText) {
+	public String encrypt(String plainText) throws Exception {
+		validateText(plainText);
 		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
 		
 		StringBuilder sb = new StringBuilder();
