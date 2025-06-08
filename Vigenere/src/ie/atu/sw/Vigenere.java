@@ -23,6 +23,14 @@ public class Vigenere {
 		}
 	}
 	
+	private void validateText(String text) throws Exception{
+		if (text == null || text.length() < MIN_KEY_SIZE) {
+			throw new Exception("Vigenere error: invalid text. The minimum "
+					+ "size of plain and cipher text is " + MIN_KEY_SIZE
+			);
+		}
+	}
+	
 	public String encrypt(String plainText) {
 		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
 		
