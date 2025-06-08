@@ -8,6 +8,7 @@ public class Vigenere {
 	}
 	
 	public void setKey(String key) {
+		this.validateKey(key);
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
