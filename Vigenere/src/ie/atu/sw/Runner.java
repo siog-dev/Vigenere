@@ -4,7 +4,7 @@ public class Runner {
 
 	public static void main(String[] args) {
 		String key = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG";
-		String plainText = "ATTACK";
+		String plainText = "ATTACK THE CASTE WALL AT DAWN";
 		
 		try {
 			Vigenere cipher = new Vigenere(key);
@@ -13,6 +13,9 @@ public class Runner {
 			System.out.println(cipher.decrypt(cipherText));
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			key = null;
 		}
+		System.out.println(key);
 	}
 }
