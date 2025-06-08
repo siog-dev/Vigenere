@@ -11,6 +11,12 @@ public class Vigenere {
 		this.key = key.trim().toUpperCase().toCharArray();
 	}
 	
+	private void validateKey(String key) throws Exception {
+		if (key == null) {
+			throw new Exception("Vigenere error: key cannot be null");
+		}
+	}
+	
 	public String encrypt(String plainText) {
 		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
 		
