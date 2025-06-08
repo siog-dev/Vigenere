@@ -4,7 +4,7 @@ public class Runner {
 
 	public static void main(String[] args) {
 		String key = "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG";
-		String plainText = "ATTACK THE CASTE WALL AT DAWN";
+		String plainText = "ATTACK THE CASTLE WALL AT DAWN UNTIL DUSK WITH GREAT FURY";
 		
 		try {
 			Vigenere cipher = new Vigenere(key);

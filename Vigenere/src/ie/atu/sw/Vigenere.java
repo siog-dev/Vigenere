@@ -15,6 +15,7 @@ public class Vigenere {
 	}
 	
 	private void validateKey(String key) throws Exception {
+		checkBounds(key);
 		if (key == null) {
 			throw new Exception("Vigenere error: key cannot be null");
 		}else if (key.length() < MIN_KEY_SIZE || key.length() > MAX_KEY_SIZE) {
@@ -30,8 +31,24 @@ public class Vigenere {
 		}
 	}
 	
+	private void checkBounds(String s) throws Exception{
+		boolean valid = true;
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			
+			if ((c < 'A' || c > 'Z') && c != 0x20) {
+				valid = false;
+				break;
+			}
+		}
+		
+		if (!valid) throw new Exception("Invalid character in key or text.");
+	}
+	
 	public String encrypt(String plainText) throws Exception {
 		validateText(plainText);
+		checkBounds(plainText);
+		
 		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
 		
 		StringBuilder sb = new StringBuilder();
@@ -56,6 +73,8 @@ public class Vigenere {
 	
 	public String decrypt(String cipherText) throws Exception {
 		validateText(cipherText);
+		checkBounds(cipherText);
+		
 		char[] localKey = cipherText.length() > key.length ? getPaddedKey(cipherText) : key;
 		
 		StringBuilder sb = new StringBuilder();
