@@ -55,7 +55,8 @@ public class Vigenere {
 		return plain;
 	}
 	
-	public String decrypt(String cipherText) {
+	public String decrypt(String cipherText) throws Exception {
+		validateText(cipherText);
 		char[] localKey = cipherText.length() > key.length ? getPaddedKey(cipherText) : key;
 		
 		StringBuilder sb = new StringBuilder();
