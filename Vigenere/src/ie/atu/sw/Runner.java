@@ -8,10 +8,11 @@ public class Runner {
 		
 		try {
 			Vigenere cipher = new Vigenere(key);
+			cipher.loadKey("./key.txt");
 			String cipherText = cipher.encrypt(plainText);
 			System.out.println(cipherText);
 			System.out.println(cipher.decrypt(cipherText));
-			cipher.saveKey("./key.txt"); // "key.ser" would also work
+			// cipher.saveKey("./key.txt"); // "key.ser" would also work
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
