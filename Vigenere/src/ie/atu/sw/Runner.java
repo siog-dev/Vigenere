@@ -11,6 +11,7 @@ public class Runner {
 			String cipherText = cipher.encrypt(plainText);
 			System.out.println(cipherText);
 			System.out.println(cipher.decrypt(cipherText));
+			cipher.saveKey("./key.txt"); // "key.ser" would also work
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {

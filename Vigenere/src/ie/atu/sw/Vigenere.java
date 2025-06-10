@@ -1,5 +1,11 @@
 package ie.atu.sw;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class Vigenere {
 	public static final int MIN_KEY_SIZE = 10;
 	public static final int MAX_KEY_SIZE = 100;
@@ -48,7 +54,6 @@ public class Vigenere {
 	public String encrypt(String plainText) throws Exception {
 		validateText(plainText);
 		// checkBounds(plainText);
-		
 		char[] localKey = plainText.length() > key.length ? getPaddedKey(plainText) : key;
 		
 		StringBuilder sb = new StringBuilder();
@@ -74,7 +79,6 @@ public class Vigenere {
 	public String decrypt(String cipherText) throws Exception {
 		validateText(cipherText);
 		// checkBounds(cipherText);
-		
 		char[] localKey = cipherText.length() > key.length ? getPaddedKey(cipherText) : key;
 		
 		StringBuilder sb = new StringBuilder();
@@ -109,6 +113,18 @@ public class Vigenere {
 		}
 		
 		return padded;
+	}
+	
+	public void saveKey(String file) throws Exception{
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File(file)));
+		out.writeObject(key);
+		out.close();
+	}
+	
+	public void loadKey(String file) throws Exception{
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(file)));
+		this.key = (char[]) in.readObject();
+		in.close();
 	}
 	
 	private static final char[][] TABULA_RECTA = { 
